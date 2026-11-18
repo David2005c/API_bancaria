@@ -1,0 +1,36 @@
+:root {
+  --bg: #f4f6fa; --card: #fff; --texto: #1d2433; --suave: #6b7488; --borde: #dde2ec;
+  --azul: #2457d6; --bajo: #1f9d55; --medio: #e0a100; --alto: #d63a3a;
+}
+@media (prefers-color-scheme: dark) {
+  :root { --bg: #12151c; --card: #1b2030; --texto: #e8ecf5; --suave: #98a2b8; --borde: #2c3347; }
+}
+* { box-sizing: border-box; }
+body { margin: 0; font-family: system-ui, -apple-system, "Segoe UI", sans-serif;
+       background: var(--bg); color: var(--texto); }
+.contenedor { max-width: 980px; margin: 0 auto; padding: 32px 16px; }
+h1 { margin: 0 0 4px; font-size: 1.6rem; }
+.sub { margin: 0 0 24px; color: var(--suave); }
+.rejilla { display: grid; grid-template-columns: 1.4fr 1fr; gap: 20px; align-items: start; }
+@media (max-width: 760px) { .rejilla { grid-template-columns: 1fr; } }
+.tarjeta { background: var(--card); border: 1px solid var(--borde); border-radius: 12px; padding: 20px; }
+.campos { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+@media (max-width: 480px) { .campos { grid-template-columns: 1fr; } }
+label { display: flex; flex-direction: column; gap: 6px; font-size: .85rem; color: var(--suave); }
+input, select { font: inherit; padding: 8px 10px; border: 1px solid var(--borde); border-radius: 8px;
+                background: var(--bg); color: var(--texto); }
+input:focus, select:focus { outline: 2px solid var(--azul); outline-offset: 1px; }
+input:invalid { border-color: var(--alto); }
+label.check { flex-direction: row; align-items: center; gap: 8px; align-self: end; padding-bottom: 8px; }
+button { margin-top: 18px; width: 100%; padding: 11px; border: 0; border-radius: 8px; cursor: pointer;
+         background: var(--azul); color: #fff; font: inherit; font-weight: 600; }
+button:disabled { opacity: .6; cursor: wait; }
+.resultado.vacio { color: var(--suave); text-align: center; padding: 40px 20px; }
+.resultado .riesgo { font-size: .8rem; text-transform: uppercase; letter-spacing: .06em; color: var(--suave); }
+.resultado .prob { font-size: 3rem; font-weight: 700; margin: 4px 0 12px; }
+.barra { height: 10px; border-radius: 99px; background: var(--borde); overflow: hidden; }
+.barra > span { display: block; height: 100%; border-radius: 99px; transition: width .4s; }
+.badge { display: inline-block; margin-top: 14px; padding: 4px 12px; border-radius: 99px;
+         color: #fff; font-weight: 600; font-size: .85rem; }
+.nivel-Bajo { background: var(--bajo); } .nivel-Medio { background: var(--medio); } .nivel-Alto { background: var(--alto); }
+.error { color: var(--alto); }

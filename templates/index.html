@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Predicción de abandono · Banca</title>
+  <link rel="stylesheet" href="/static/css/styles.css">
+</head>
+<body>
+  <main class="contenedor">
+    <header>
+      <h1>Predicción de abandono de clientes</h1>
+      <p class="sub">Introduce los datos del cliente y el modelo estimará su probabilidad de abandono.</p>
+    </header>
+
+    <div class="rejilla">
+      <form id="form-cliente" class="tarjeta" novalidate>
+        <div class="campos">
+          <label>Edad
+            <input type="number" name="edad" min="18" max="100" value="40" required>
+          </label>
+          <label>Ingresos anuales (€)
+            <input type="number" name="ingresos_anuales" min="0" step="0.01" value="24000" required>
+          </label>
+          <label>Antigüedad (meses)
+            <input type="number" name="antiguedad_meses" min="0" max="600" value="36" required>
+          </label>
+          <label>Saldo de la cuenta (€)
+            <input type="number" name="saldo_cuenta" min="0" step="0.01" value="0" required>
+          </label>
+          <label>Nº de productos
+            <input type="number" name="num_productos" min="1" max="10" value="1" required>
+          </label>
+          <label>Nivel de estudios
+            <select name="nivel_estudios">
+              {% for e in estudios %}<option{% if e == "Grado" %} selected{% endif %}>{{ e }}</option>{% endfor %}
+            </select>
+          </label>
+          <label>Tipo de cuenta
+            <select name="tipo_cuenta">
+              {% for c in cuentas %}<option>{{ c }}</option>{% endfor %}
+            </select>
+          </label>
+          <label>Nivel de satisfacción
+            <select name="nivel_satisfaccion">
+              {% for s in satisfaccion %}<option{% if s == "Medio" %} selected{% endif %}>{{ s }}</option>{% endfor %}
+            </select>
+          </label>
+          <label>Canal preferido
+            <select name="canal_preferido">
+              {% for c in canales %}<option>{{ c }}</option>{% endfor %}
+            </select>
+          </label>
+          <label class="check">
+            <input type="checkbox" name="tiene_tarjeta"> Tiene tarjeta
+          </label>
+        </div>
+        <button type="submit" id="btn-predecir">Predecir</button>
+      </form>
+
+      <section id="resultado" class="tarjeta resultado vacio" aria-live="polite">
+        <p class="placeholder">El resultado aparecerá aquí.</p>
+      </section>
+    </div>
+  </main>
+  <script src="/static/js/app.js"></script>
+</body>
+</html>
