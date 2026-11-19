@@ -17,6 +17,9 @@
     <div class="rejilla">
       <form id="form-cliente" class="tarjeta" novalidate>
         <div class="campos">
+          <label class="ancho">ID de cliente
+            <input type="text" name="id_cliente" value="CLI-1001" maxlength="30" required>
+          </label>
           <label>Edad
             <input type="number" name="edad" min="18" max="100" value="40" required>
           </label>
@@ -34,22 +37,37 @@
           </label>
           <label>Nivel de estudios
             <select name="nivel_estudios">
-              {% for e in estudios %}<option{% if e == "Grado" %} selected{% endif %}>{{ e }}</option>{% endfor %}
+              <option>Primaria</option>
+              <option>Secundaria</option>
+              <option selected>Grado</option>
+              <option>Master</option>
+              <option>Doctorado</option>
             </select>
           </label>
           <label>Tipo de cuenta
             <select name="tipo_cuenta">
-              {% for c in cuentas %}<option>{{ c }}</option>{% endfor %}
+              <option>Corriente</option>
+              <option>Ahorro</option>
+              <option>Nomina</option>
+              <option>Inversion</option>
             </select>
           </label>
           <label>Nivel de satisfacción
             <select name="nivel_satisfaccion">
-              {% for s in satisfaccion %}<option{% if s == "Medio" %} selected{% endif %}>{{ s }}</option>{% endfor %}
+              <option>Muy Bajo</option>
+              <option>Bajo</option>
+              <option selected>Medio</option>
+              <option>Alto</option>
+              <option>Muy Alto</option>
             </select>
           </label>
           <label>Canal preferido
             <select name="canal_preferido">
-              {% for c in canales %}<option>{{ c }}</option>{% endfor %}
+              <option>App Movil</option>
+              <option>Web</option>
+              <option>Oficina</option>
+              <option>Telefono</option>
+              <option>Cajero Antiguo</option>
             </select>
           </label>
           <label class="check">
@@ -64,6 +82,6 @@
       </section>
     </div>
   </main>
-  <script src="/static/app.js"></script>
+  <script defer src="/static/app.js"></script>
 </body>
 </html>

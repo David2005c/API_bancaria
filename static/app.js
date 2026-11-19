@@ -7,6 +7,7 @@ function datosFormulario() {
   const fd = new FormData(form);
   const num = (k) => Number(fd.get(k));
   return {
+    id_cliente: String(fd.get("id_cliente")).trim(),
     edad: Math.round(num("edad")),
     ingresos_anuales: num("ingresos_anuales"),
     antiguedad_meses: Math.round(num("antiguedad_meses")),
@@ -37,11 +38,12 @@ function pintarResultado(r) {
 
   caja.className = "tarjeta resultado";
   caja.replaceChildren(
+    el("div", "riesgo", r.id_cliente + " · Probabilidad de abandono"),
     el("div", "riesgo", "Probabilidad de abandono"),
     el("div", "prob", pct + " %"),
     barra,
     el("span", "badge nivel-" + r.nivel_riesgo, "Riesgo " + r.nivel_riesgo),
-    el("p", "sub", r.abandono ? "El modelo predice que el cliente abandonará."
+    el("p", "sub", r.abandono === 1 ? "El modelo predice que el cliente abandonará."
                               : "El modelo predice que el cliente permanecerá."),
   );
 }
